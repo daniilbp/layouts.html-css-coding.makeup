@@ -1,0 +1,430 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: local('OpenSans-Regular'),
+    url('/fonts/OpenSansRegular.woff2') format('woff2'),
+    url('/fonts/OpenSansRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: local('OpenSans-Light'),
+    url('/fonts/OpenSansLight.woff2') format('woff2'),
+    url('/fonts/OpenSansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: local('OpenSans-Bold'),
+    url('/fonts/OpenSansBold.woff2') format('woff2'),
+    url('/fonts/OpenSansBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+	font-family: 'OpenSans', 'Roboto', sans-serif;
+  font-weight: 400;
+  min-width: 320px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 70px 36px 0 92px;
+  max-width: 2444px;
+  min-height: 640px;
+  background: #424242;
+}
+
+/* checkbox */
+.checkbox {
+  flex-direction: column;
+  align-items: start;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 21px 29px 29px 30px;
+  margin-bottom: auto;
+  margin-right: 58px;
+}
+
+.checkbox__title {
+  margin-bottom: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333333;
+}
+
+.checkbox__custom:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.checkbox__text {
+  position: relative;
+	/* padding-left: 20px; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #333333;
+}
+
+.checkbox__text::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999999;
+  border-radius: 3px;
+}
+
+.checkbox__text::after {
+	content: "";
+	position: absolute;
+	left: -20px;
+	top: 3px;
+	width: 15px;
+	height: 15px;
+	background-image: url("/img/task_1.svg");
+	background-position: center;
+	background-size: 70%;
+	background-repeat: no-repeat;
+  border: 1px solid #CCB26E;
+  border-radius: 3px;
+	opacity: 0;
+}
+
+.checkbox__input:checked + .checkbox__text::after {
+	opacity: 1;
+}
+
+.checkbox__custom {
+	user-select: none;
+	cursor: pointer;
+}
+
+.visually-hidden {
+  /* display: none; */
+  visibility: hidden;
+}
+
+/* select */
+.select-block {
+  margin-right: 58px;
+  margin-bottom: auto;
+}
+
+.choices {
+	min-width: 176px;
+  border-radius: 10px;
+}
+
+.choices.is-open {
+  z-index: 1;
+}
+
+.choices__inner {
+  padding-top: 9px;
+  padding-left: 15px;
+  min-width: 176px;
+  min-height: 39px;
+  border: none
+}
+
+.choices__list {
+  padding: 0;
+}
+
+.is-open .choices__inner {
+  outline: 1px solid #CCB26E;
+  border-radius: 10px;
+}
+
+.choices__item {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #333333;
+  opacity: 1;
+}
+
+.is-open .choices__list--dropdown {
+  border-radius: 10px;
+  z-index: -1;
+  outline: 1px solid #CCB26E;
+  top: 3%;
+  padding-top: 59px;
+  border: none;
+}
+
+.choices__list--dropdown .choices__placeholder {
+	display: none;
+}
+
+.choices[data-type*=select-one]::after {
+	border: none;
+	margin-top: 0;
+	width: 10px;
+	height: 10px;
+	background-image: url("/img/down-arrow.svg");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateY(-50%);
+}
+
+.choices.is-open[data-type*=select-one]::after {
+	margin-top: 0;
+  background-image: url('/img/up-arrow.svg');
+	/* transform: translateY(-50%) rotate(180deg); */
+}
+
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 0px;
+}
+
+.choices__item--choice:nth-child(2) {
+  padding-top: 0;
+}
+
+.choices__item--choice:last-child {
+  padding-bottom: 20px;
+}
+
+.choices__list--dropdown .choices__item {
+  padding-left: 15px;
+}
+
+@media (min-width: 640px) {
+  .choices__list--dropdown .choices__item--selectable {
+    padding-right: 0;
+  }
+}
+
+/* Yandex Maps */
+.yandex-map {
+  margin-right: 58px;
+  margin-bottom: auto;
+}
+
+.maps-dscr {
+  position: absolute;
+  max-width: 455px;
+  top: 23px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+[class*="ground-pane"] {
+  filter: grayscale(1);
+}
+
+/* scrollbar */
+.simplebar-content-wrapper {
+  overflow: auto;
+}
+
+.customScroll {
+  margin-right: 58px;
+  margin-bottom: auto;
+  width: 399px;
+  height: 310px;
+  background-color: #FFFFFF;
+  padding: 20px 30px 0 29px;
+}
+
+.simplebar-track.simplebar-vertical {
+  right: 6px;
+  width: 7px;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 1;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  background: #CCB26E;
+  border-radius: 5px;
+  width: 6px;
+  height: 70px;
+  top: 7px;
+  right: 0;
+}
+
+.simplebar-content{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 170%;
+  color: #333333;
+}
+
+/* form */
+form {
+	min-width: 440px;
+  background: rgba(0, 0, 0, .4);
+  border-radius: 10px;
+  padding: 38px 30px;
+  margin-bottom: 160px;
+  position: relative;
+  margin-right: 58px;
+}
+
+form input {
+	display: block;
+	margin-bottom: 31px;
+  background: #FFFFFF;
+  border: 1px solid #FF5C00;
+  border-radius: 10px;
+  min-width: 380px;
+  min-height: 60px;
+  padding: 24px 20px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #999999;
+  position: relative;
+
+}
+
+.form__btn {
+  padding: 17px 53px;
+  width: 192px;
+  height: 60px;
+  background: #FF5C00;
+  border-radius: 10px;
+  border: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.js-validate-error-label {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FF5C00!important;
+  /* Top: 20px;
+  Left: 50px; */
+  background: none;
+}
+
+/* tooltip */
+.tooltip-block {
+  position: relative;
+  width: 375px;
+  padding: 20px 78px 20px 29px;
+  background: #FFFFFF;
+  margin-bottom: auto;
+}
+
+.tooltip-dcsr {
+  width: 268px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 170%;
+  color: #333333;
+}
+
+.tooltip {
+  position: absolute;
+  fill: #BCBCBC;
+  cursor: pointer;
+  bottom: 15%;
+  left: 69.5%;
+  transition: fill 0.3s ease-in-out;
+}
+
+
+.tooltip__txt {
+  position: absolute;
+	left: 50%;
+	bottom: calc(25% + 10px);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFFFFF;
+	z-index: 3;
+	padding: 7px 15px;
+	max-width: 163px;
+	background: #666666;
+	opacity: 0;
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out, visibility .3s ease-in-out;
+}
+/* чтобы при изм. ширины тултип оставался
+   посередине над иконкой, нужно сделать
+   текст и иконку в одном div и выровнить
+   по центру, текст растянуть по ширине
+   div-а и скрыть opacity 0 */
+
+.tooltip__txt::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  Width: 14.39px;
+  Height: 14.28px;
+  left: 74px;
+  bottom: calc(10% - 6px);
+  background: #666666;
+  transform: matrix(-0.71, -0.71, -0.71, 0.71, 0, 0);
+}
+
+.tooltip:hover {
+  fill: #CCB26E;
+}
+
+.tooltip-btn:hover+.tooltip__txt {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-btn:focus+.tooltip__txt {
+  opacity: 1;
+  visibility: visible;
+}
